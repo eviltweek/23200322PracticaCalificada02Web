@@ -16,6 +16,7 @@
 .digimon-page{
     display: flex;
     justify-content: space-between;
+    background-color: aliceblue;
 }
 .digimon-filter{
     width: 25%;

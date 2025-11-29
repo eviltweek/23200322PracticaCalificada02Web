@@ -12,7 +12,7 @@
         <label for="password">Password</label>
         <input v-model="password" type="password" placeholder="Password" id="password">
 
-        <button @click="iniciarSesion">Log In</button>
+        <button type="button" @click="iniciarSesion">Log In</button>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
@@ -172,6 +172,10 @@ export default {
                     position:'top',
                     message: 'Inicio de sesion exitoso'
                 })
+                // Redirigir a /digimon después de inicio exitoso
+                if (this.$router) {
+                    this.$router.push('/digimon');
+                }
             }).catch((error) => {
                 console.log("Error al iniciar sesion: ", error)
                 this.$q.notify({
