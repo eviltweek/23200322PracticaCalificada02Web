@@ -3,9 +3,7 @@
     <div class="digimon-list">
         <div class="digimon-grid">
             <div class="digimon-item" v-for="item in digimons" :key="item.name">
-                <h5>{{ item.name }}</h5>
-                <p>{{ item.img }}</p>
-                <p>{{ item.level }}</p>
+                <DigimonItem :digimon="item"/>
             </div>  
         </div>
     </div>
@@ -20,11 +18,13 @@
 </style>
 
 <script>
+import DigimonItem from 'src/components/digimon/DigimonItem.vue';
+
 
 export default {
     name: 'DigimonList',
     components: {
-        DigimonItem: () => import('src/components/digimon/DigimonItem.vue'),
+        DigimonItem,
     },
     data() {
         return {

@@ -1,7 +1,13 @@
 <template>
     <q-card class="digimon-card">
     <q-card-section>
-        <q-img :src="item.img" alt="Imagn del digimon"/>
+        <q-img :src="digimon.img" alt="Imagen del digimon"/>
+    </q-card-section>
+    <q-card-section>
+        <q-card-title>{{ digimon.name }}</q-card-title>
+        <div class="text h-6 font-weight-bold">{{ digimon.level }}</div>
+        <div class="text-center">
+        </div>
     </q-card-section>
     </q-card>
 </template>
@@ -23,6 +29,7 @@
             digimon: {
             type: Object,
             required: true,
-        },
+            },
+        }
     }
 </script>
