@@ -31,6 +31,10 @@ export default {
             type: String,
             default: null,
         },
+        filterName: {
+            type: String,
+            default: null,
+        },
     },
     data() {
         return {
@@ -42,11 +46,22 @@ export default {
     },
     computed: {
         filteredDigimons() {
-            if (!this.filterLevel) return this.allDigimons;
+            // If no filters, return all
+            const hasLevel = this.filterLevel && this.filterLevel.toString().trim() !== '';
+            const hasName = this.filterName && this.filterName.toString().trim() !== '';
+            if (!hasLevel && !hasName) return this.allDigimons;
+
             return this.allDigimons.filter(d => {
-                // Some levels may be null or uppercase/lowercase variants; compare case-insensitive
-                if (!d.level) return false;
-                return d.level.toLowerCase() === this.filterLevel.toLowerCase();
+                let ok = true;
+                if (hasLevel) {
+                    if (!d.level) ok = false;
+                    else ok = ok && d.level.toLowerCase() === this.filterLevel.toLowerCase();
+                }
+                if (hasName) {
+                    if (!d.name) ok = false;
+                    else ok = ok && d.name.toLowerCase().includes(this.filterName.toLowerCase());
+                }
+                return ok;
             });
         }
     },

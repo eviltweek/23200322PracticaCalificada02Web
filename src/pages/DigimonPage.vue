@@ -2,11 +2,11 @@
 
     <div class="digimon-page">
         <div class="digimon-filter q-ml-md q-mr-xl">
-            <DigimonFilter @change-level="selectedLevel = $event"/>
+            <DigimonFilter @change-level="selectedLevel = $event" @change-name="selectedName = $event"/>
         </div>
 
         <div class="digimon-list q-ml-xl q-mr-md">
-            <DigimonList :filter-level="selectedLevel"/>
+            <DigimonList :filter-level="selectedLevel" :filter-name="selectedName"/>
         </div>
 
     </div>   
@@ -37,6 +37,7 @@ export default {
     data() {
         return {
             selectedLevel: null,
+            selectedName: null,
         };
     },
 }
